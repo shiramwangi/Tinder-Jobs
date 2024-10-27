@@ -1,0 +1,19 @@
+<template>
+    <GridLayout class="card">
+        <StackLayout>
+            <Image src="{{ company.logoUrl }}" class="card-image" />
+            <StackLayout class="p-4">
+                <Label text="{{ title }}" class="text-xl font-bold mb-2" textWrap="true" />
+                <GridLayout columns="auto, *" class="mb-2">
+                    <Label col="0" text="{{ company.name }}" class="text-lg text-gray-600" />
+                    <Label col="1" text="{{ location }}" class="text-gray-500 text-right" />
+                </GridLayout>
+                <Label text="{{ salary }}" class="salary-tag mb-3" />
+                <WrapLayout class="mb-3">
+                    <Label text="{{ skill }}" class="skill-tag" repeat="{{ skills }}" />
+                </WrapLayout>
+                <Label text="{{ description }}" textWrap="true" class="text-gray-700" />
+            </StackLayout>
+        </StackLayout>
+    </GridLayout>
+</template>

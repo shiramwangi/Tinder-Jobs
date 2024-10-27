@@ -1,0 +1,63 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
+    <ActionBar class="action-bar">
+        <GridLayout columns="auto, *, auto">
+            <StackLayout col="1" horizontalAlignment="center" orientation="horizontal">
+                <Label text="💼" class="action-bar-logo mr-2" />
+                <Label text="JobSwipe" class="action-bar-logo" />
+            </StackLayout>
+            <Label col="2" text="👤" fontSize="24" tap="{{ showProfile }}" class="mr-4" />
+        </GridLayout>
+    </ActionBar>
+
+    <GridLayout rows="*, auto">
+        <!-- Job Cards Stack -->
+        <GridLayout row="0" class="card-container">
+            <GridLayout class="card">
+                <StackLayout>
+                    <!-- Company Logo Area -->
+                    <GridLayout class="card-image" rows="*" columns="*" backgroundColor="#FFF3E0">
+                        <Label text="{{ currentJob.companyLogo }}" 
+                               class="text-6xl text-center" 
+                               verticalAlignment="center"/>
+                    </GridLayout>
+
+                    <!-- Job Details -->
+                    <StackLayout class="p-4">
+                        <Label text="{{ currentJob.title }}" 
+                               class="text-xl font-bold mb-2" 
+                               textWrap="true" />
+                        
+                        <GridLayout columns="auto, *" class="mb-2">
+                            <Label col="0" 
+                                   text="{{ currentJob.company }}" 
+                                   class="text-lg text-gray-600" />
+                            <Label col="1" 
+                                   text="{{ currentJob.location }}" 
+                                   class="text-gray-500 text-right" />
+                        </GridLayout>
+
+                        <Label text="{{ currentJob.salary }}" 
+                               class="salary-tag mb-3" />
+
+                        <!-- Skills -->
+                        <WrapLayout class="mb-3">
+                            <Label text="{{ skill }}" 
+                                   class="skill-tag" 
+                                   repeat="{{ currentJob.skills }}" />
+                        </WrapLayout>
+
+                        <Label text="{{ currentJob.description }}" 
+                               textWrap="true" 
+                               class="text-gray-700" />
+                    </StackLayout>
+                </StackLayout>
+            </GridLayout>
+        </GridLayout>
+
+        <!-- Action Buttons -->
+        <GridLayout row="1" columns="*, auto, auto, *" class="p-6">
+            <Button col="1" text="✕" tap="{{ onSkip }}" class="btn-skip mr-4" />
+            <Button col="2" text="♥" tap="{{ onLike }}" class="btn-like ml-4" />
+        </GridLayout>
+    </GridLayout>
+</Page>

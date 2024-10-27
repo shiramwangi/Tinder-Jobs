@@ -1,0 +1,54 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
+    <ActionBar class="action-bar">
+        <GridLayout columns="auto, *, auto">
+            <Label col="0" text="←" fontSize="24" tap="{{ goBack }}" class="ml-4" />
+            <StackLayout col="1" horizontalAlignment="center" orientation="horizontal">
+                <Label text="💼" class="action-bar-logo mr-2" />
+                <Label text="Profile" class="action-bar-logo" />
+            </StackLayout>
+        </GridLayout>
+    </ActionBar>
+
+    <ScrollView class="card-container">
+        <StackLayout class="p-4">
+            <Label text="👤" class="profile-photo text-8xl text-center" />
+            
+            <Label text="{{ userProfile.name }}" class="text-2xl font-bold text-center mt-4" />
+            <Label text="{{ userProfile.title }}" class="text-lg text-gray-600 text-center mb-4" />
+            
+            <GridLayout rows="auto, auto" columns="*, *" class="stats-container mb-4">
+                <Label row="0" col="0" text="{{ userProfile.applications }}" class="text-center text-xl font-bold text-orange-600" />
+                <Label row="0" col="1" text="{{ userProfile.matches }}" class="text-center text-xl font-bold text-orange-600" />
+                <Label row="1" col="0" text="Applications" class="text-center text-gray-600" />
+                <Label row="1" col="1" text="Matches" class="text-center text-gray-600" />
+            </GridLayout>
+
+            <StackLayout class="ios-list p-4">
+                <Label text="Skills" class="text-xl font-bold mb-2" />
+                <WrapLayout class="mb-4">
+                    <Label text="{{ skill }}" class="skill-tag" repeat="{{ userProfile.skills }}" />
+                </WrapLayout>
+
+                <Label text="Preferred Locations" class="text-xl font-bold mb-2" />
+                <ListView items="{{ userProfile.preferredLocations }}" height="100" class="mb-4">
+                    <ListView.itemTemplate>
+                        <Label text="{{ $value }}" class="p-2 text-gray-700" />
+                    </ListView.itemTemplate>
+                </ListView>
+
+                <Label text="Saved Jobs" class="text-xl font-bold mb-2" />
+                <ListView items="{{ userProfile.savedJobs }}" height="200">
+                    <ListView.itemTemplate>
+                        <GridLayout columns="*, auto" class="p-3 border-b border-gray-200">
+                            <StackLayout col="0">
+                                <Label text="{{ title }}" class="font-bold" />
+                                <Label text="{{ company }}" class="text-gray-600" />
+                            </StackLayout>
+                            <Label col="1" text="→" class="text-2xl text-gray-400" />
+                        </GridLayout>
+                    </ListView.itemTemplate>
+                </ListView>
+            </StackLayout>
+        </StackLayout>
+    </ScrollView>
+</Page>

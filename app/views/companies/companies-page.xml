@@ -1,0 +1,26 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
+    <ActionBar class="action-bar">
+        <GridLayout columns="auto, *, auto">
+            <Label col="0" text="←" fontSize="24" tap="{{ goBack }}" class="ml-4" />
+            <StackLayout col="1" horizontalAlignment="center" orientation="horizontal">
+                <Label text="💼" class="action-bar-logo mr-2" />
+                <Label text="Companies" class="action-bar-logo" />
+            </StackLayout>
+        </GridLayout>
+    </ActionBar>
+
+    <GridLayout class="card-container">
+        <ListView items="{{ companies }}" itemTap="{{ onCompanyTap }}" class="ios-list">
+            <ListView.itemTemplate>
+                <GridLayout columns="auto, *" class="list-group-item p-4" height="120">
+                    <Label col="0" text="{{ logo }}" class="text-4xl mr-4" />
+                    <StackLayout col="1">
+                        <Label text="{{ name }}" class="text-lg font-bold" />
+                        <Label text="{{ industry }}" class="text-gray-600" />
+                        <Label text="{{ location }}" class="text-gray-500" />
+                    </StackLayout>
+                </GridLayout>
+            </ListView.itemTemplate>
+        </ListView>
+    </GridLayout>
+</Page>

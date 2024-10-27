@@ -1,0 +1,22 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
+    <ActionBar title="JobSwipe" class="action-bar">
+        <NavigationButton visibility="collapsed" />
+        <ActionItem ios.position="right" tap="{{ navigateToProfile }}">
+            <Label text="👤" fontSize="24" />
+        </ActionItem>
+        <ActionItem ios.position="right" tap="{{ navigateToCompanies }}">
+            <Label text="🏢" fontSize="24" />
+        </ActionItem>
+    </ActionBar>
+
+    <GridLayout rows="*, auto">
+        <GridLayout row="0" class="card-container">
+            <ns:job-card job="{{ currentJob }}" />
+        </GridLayout>
+
+        <GridLayout row="1" columns="*, auto, auto, *" class="p-6">
+            <Button col="1" text="✕" tap="{{ onSkip }}" class="btn-skip mr-4" />
+            <Button col="2" text="♥" tap="{{ onLike }}" class="btn-like ml-4" />
+        </GridLayout>
+    </GridLayout>
+</Page>

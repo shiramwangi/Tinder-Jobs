@@ -1,0 +1,37 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
+    <ActionBar title="{{ company.name }}" class="action-bar">
+        <NavigationButton />
+    </ActionBar>
+
+    <ScrollView>
+        <StackLayout class="p-4">
+            <Image src="{{ company.logoUrl }}" class="company-detail-logo" height="200" />
+            
+            <Label text="{{ company.name }}" class="text-2xl font-bold mt-4" />
+            <Label text="{{ company.industry }}" class="text-lg text-gray-600 mb-2" />
+            
+            <GridLayout columns="auto, *" class="mb-4">
+                <Label col="0" text="📍" class="mr-2" />
+                <Label col="1" text="{{ company.location }}" class="text-gray-500" />
+            </GridLayout>
+            
+            <Label text="About" class="text-xl font-bold mb-2" />
+            <Label text="{{ company.description }}" textWrap="true" class="text-gray-700 mb-4" />
+            
+            <Label text="Open Positions" class="text-xl font-bold mb-2" />
+            <ListView items="{{ company.openPositions }}" height="300" class="mb-4">
+                <ListView.itemTemplate>
+                    <StackLayout class="p-3 border-b border-gray-200">
+                        <Label text="{{ title }}" class="font-bold" />
+                        <Label text="{{ salary }}" class="text-gray-600" />
+                    </StackLayout>
+                </ListView.itemTemplate>
+            </ListView>
+            
+            <Label text="Benefits" class="text-xl font-bold mb-2" />
+            <WrapLayout class="mb-4">
+                <Label text="{{ benefit }}" class="benefit-tag" repeat="{{ company.benefits }}" />
+            </WrapLayout>
+        </StackLayout>
+    </ScrollView>
+</Page>
